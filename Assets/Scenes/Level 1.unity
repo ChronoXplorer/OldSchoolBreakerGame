@@ -237,7 +237,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 222367953}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 297d1a8e278278f49b84d379c83b5b31, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -723,7 +723,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &1503929041
 GameObject:
   m_ObjectHideFlags: 0
