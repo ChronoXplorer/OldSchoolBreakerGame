@@ -4,24 +4,20 @@ using UnityEngine;
 
 public class PaddleMove : MonoBehaviour
 {
-    Rigidbody2D body;
-
-    float horizontal;
+    [SerializeField] float minX = 1f;
+    [SerializeField] float maxX = 15f;
 
     public float moveSpeed = 10f;
 
-    private void Start()
-    {
-        body = GetComponent<Rigidbody2D>();
-    }
-
     private void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
+        PaddleMovement();
     }
 
-    private void FixedUpdate()
+    void PaddleMovement()
     {
-        body.velocity = new Vector2(horizontal * moveSpeed, 0);
+        transform.Translate(Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime, 0f, 0f);
+
+        transform.position = new Vector2(Mathf.Clamp(transform.position.x, minX, maxX), transform.position.y);
     }
 }
