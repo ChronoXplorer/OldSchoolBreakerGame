@@ -17,7 +17,14 @@ public class BlockScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        DestroyBlock();
+    }
+
+    private void DestroyBlock()
+    {
+        FindObjectOfType<GameStatusScript>().AddToScore();
         AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position);
         Destroy(gameObject);
+        level.BlockDestroyed();
     }
 }
