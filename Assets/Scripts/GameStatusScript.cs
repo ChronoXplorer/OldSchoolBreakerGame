@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameStatusScript : MonoBehaviour
@@ -10,7 +11,27 @@ public class GameStatusScript : MonoBehaviour
 
     // state variables
     [SerializeField] int currentScore = 0;
-    
+    [SerializeField] TextMeshProUGUI scoreText;
+
+    private void Awake()
+    {
+        int gameStatusCount = FindObjectsOfType<GameStatusScript>().Length;
+        if(gameStatusCount > 1)
+        {
+            gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        scoreText.text = currentScore.ToString();
+    }
+
     void Update()
     {
         Time.timeScale = gameSpeed;
@@ -19,5 +40,6 @@ public class GameStatusScript : MonoBehaviour
     public void AddToScore()
     {
         currentScore += pointPerBlockDestroyed;
+        scoreText.text = currentScore.ToString();
     }
 }
